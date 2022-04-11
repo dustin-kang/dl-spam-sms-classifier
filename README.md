@@ -1,7 +1,17 @@
-# proj5-spam-sms-classifier
+# 💬 spam-sms-classifier
 RNN, ELMo, Xgboost등의 머신러닝 모델들을 이용한 스팸 문자 분류 및 분석
 
+# 1. 배경
 
+> 스팸과 스팸이 아닌 문자를 확실하면서 빠르게 구별하여 제거가 용이하도록 만들기 위한 배경
+
+스팸 문자를 어떤 모델이 확실하게 분류 할 수 있을까를 중점으로 실험적인 프로젝트를 준비하였습니다.
+
+[v] 다양한 모델을 활용하여 성능을 높일 수 있지 않을까?
+
+[v] 딥러닝 뿐만 아니라 머신러닝을 이용하면 어떤 모델이 더 좋은 성능을 낼까?
+
+# 2. 파일 디렉토리 및 데이터셋
 ## 📂 File Structure
 ```
 ├── README.md
@@ -53,17 +63,10 @@ RNN, ELMo, Xgboost등의 머신러닝 모델들을 이용한 스팸 문자 분�
 ```
 - [download](https://www.kaggle.com/uciml/sms-spam-collection-dataset)
 
-# 1. Intro
 
-> 스팸과 스팸이 아닌 문자를 확실하면서 빠르게 구별하여 제거가 용이하도록 만들기 위한 배경
 
-스팸 문자를 어떤 모델이 확실하게 분류 할 수 있을까를 중점으로 실험적인 프로젝트를 준비하였습니다.
-
-[v] 다양한 모델을 활용하여 성능을 높일 수 있지 않을까?
-
-[v] 딥러닝 뿐만 아니라 머신러닝을 이용하면 어떤 모델이 더 좋은 성능을 낼까?
-
-# 2. Data Preprocessing
+# 3. 제작과정
+## 데이터 전처리
 ### 기본 전처리
 - `isnull().value.any()` : null 값이 있는 데이터를 확인하고 제거한다.
 - `.nunique()` : 중복이 있는 데이터를 제거한다.
@@ -80,7 +83,7 @@ RNN, ELMo, Xgboost등의 머신러닝 모델들을 이용한 스팸 문자 분�
 - 워드 클라우드로 나타냈을 때, 전체적으로는 `now` 나 `will` 단어들이 눈에 띄었다.
 - 스팸과 일반 문자들을 비교했을 때, 스팸 문자 데이터는 `free` 나 `now` `mobile` `text` 등 사용자에게 무언가를 요구하거나 광고성 단어들이 빈도수가 많았고 이외로 일반 문자 데이터는 일상적으로 사용하는 단어들이 빈도수가 많았습니다.
 
-# 3. Modeling
+## 모델링
 ### RNN
 RNN 모델은 딥러닝에서 가장 기본적인 시퀀스 모델입니다. \
 이 모델을 사용한 이유는 단어 시퀀스에 대해 Many-to-one으로 하는 스팸메일 분류나 감성 분류를 진행할 수 있기 때문입니다.
@@ -103,7 +106,7 @@ estimator와 max_features를 하이퍼파라미터로 하여 최적의 결과를
 
 3번의 학습을 통해 진행 한 결과, 그 중 **Epoch이 4일 때 가장 낮은 손실**이 나왔으며 **가장 높은 정확도는 0.993** 이었습니다. 한 번 학습 의 소요한 시간은 약 3시간 정도 였습니다.
 
-# 4. Outtro
+# 4. 결과 및 참고자료 
 ### Overfitting
 이번 프로젝트를 진행하면서 결과적으로 데이터셋 크기가 작아 에폭수가 3~5만 넘어가도 과적합이 되는 경우가 많았다.\
  그래서 에폭수를 늘려 긴 학습을 진행했다.
@@ -111,8 +114,8 @@ estimator와 max_features를 하이퍼파라미터로 하여 최적의 결과를
 ### ML AND DL
 그리고  ELMo를 기반으로 일반 RNN 그리고 다양한 머신러닝 앙상블 모델을 활용하여 학습을 진행하였는데 그럼에도 문맥을 잘 고려할 수 있는 임베딩 모델이 가장 높은 정확도를 보였던 것 같다.
 
-### YOUTUBE ▶️
-https://www.youtube.com/watch?v=Z_UMSz2yWwY
+### 발표영상
+[![Watch on Youtube](https://user-images.githubusercontent.com/55238671/137104956-28e5f689-b52a-4be9-bce0-85608a517ba8.png)](https://www.youtube.com/watch?v=Z_UMSz2yWwY)
 
 ### Reference
 - https://www.kaggle.com/faressayah/natural-language-processing-nlp-for-beginners
